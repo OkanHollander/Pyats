@@ -2,10 +2,8 @@ from genie.testbed import load
 
 testbed = load("../testbed.yml")
 
-dev = testbed.devices["CSR1000_01"]
-dev.connect(log_stdout = False)
-
-interfaces = dev.parse("show ip int brief")
-print(interfaces)
-
-
+for name in testbed.devices.keys():
+    dev = testbed.devices[name]
+    dev.connect(log_stdout = False)
+    interfaces = dev.parse("show ip int brief")
+    print(interfaces)
